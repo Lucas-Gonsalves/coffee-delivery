@@ -1,7 +1,10 @@
+import { SucessContainer } from "./styles";
+
+
 export function Sucess() {
   return (
-    <div>
+    <SucessContainer>
       <h2>Sucess</h2>
-    </div>
+    </SucessContainer>
   );
 };

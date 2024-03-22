@@ -1,7 +1,10 @@
+import { HomeContainer } from "./styles";
+
+
 export function Home() {
   return (
-    <div>
+    <HomeContainer>
       <h2>Home</h2>
-    </div>
+    </HomeContainer>
   );
 };

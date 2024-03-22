@@ -1,7 +1,10 @@
+import { CheckoutContainer } from "./styles";
+
+
 export function Checkout() {
   return (
-    <div>
+    <CheckoutContainer>
       <h2>Checkout</h2>
-    </div>
+    </CheckoutContainer>
   );
 };
