@@ -1,10 +1,19 @@
-import { HomeContainer } from "./styles";
+import { HomeContainer, WelcomeContent } from "./styles";
+
+import coffeeDeliveryLogoBig from "../../assets/background/coffe-delivey-logo-big.svg";
+import { Presentation } from "./Presentation";
 
 
 export function Home() {
   return (
     <HomeContainer>
-      <h2>Home</h2>
+
+      <WelcomeContent>
+        <Presentation/>
+        <img src={coffeeDeliveryLogoBig} alt="Logo Coffe Delivery" />
+      </WelcomeContent>
+
+
     </HomeContainer>
   );
 };

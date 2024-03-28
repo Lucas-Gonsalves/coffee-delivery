@@ -59,6 +59,7 @@ export const defaultTheme = {
 
 
   "line-height": {
+    common: "100%",
     default: "130%",
     title: "160%",
   },
@@ -66,7 +67,7 @@ export const defaultTheme = {
 
   "device-breackpoints": {
     xs: "320px",
-    s: "480px",
+    s: "600px",
     m: "768px",
     l: "992px",
     xl: "1200px",

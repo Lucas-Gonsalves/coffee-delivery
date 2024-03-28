@@ -15,7 +15,9 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
+    background: ${props => props.theme.colors["white-200"]};
     font-family: ${props => props.theme.font.family.default};
+    line-height: ${props => props.theme["line-height"].default};
     -webkit-font-smoothing: antialiased;
   }
   
