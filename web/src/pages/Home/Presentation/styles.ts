@@ -17,7 +17,7 @@ export const TitleSet = styled.div`
   text-align: center;
 
   h1 {
-    max-width: 31rem;
+    max-width: 37rem;
     margin: 0 auto 1.6rem;
 
     color: ${props => props.theme.colors["brown-500"]};
@@ -101,7 +101,7 @@ export const IconsSet = styled.div`
   flex-direction: column;
 
   background: ${props => props.theme.colors["white-300"]};
-  padding: 1.6rem;
+  padding: 2.6rem;
   border-radius: 16px;
 
   gap: 1.6rem;

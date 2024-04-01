@@ -2,6 +2,7 @@ import { HomeContainer, WelcomeContent } from "./styles";
 
 import coffeeDeliveryLogoBig from "../../assets/background/coffe-delivey-logo-big.svg";
 import { Presentation } from "./Presentation";
+import { Products } from "./Products";
 
 
 export function Home() {
@@ -13,6 +14,7 @@ export function Home() {
         <img src={coffeeDeliveryLogoBig} alt="Logo Coffe Delivery" />
       </WelcomeContent>
 
+      <Products/>
 
     </HomeContainer>
   );

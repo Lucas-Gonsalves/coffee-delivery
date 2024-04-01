@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface IconInformationContainerProps {
-  "icon-color"?: "yellow" | "yellow-dark" | "purple" | "brown";
+  "data-icon-color"?: "yellow" | "yellow-dark" | "purple" | "brown";
 };
 
 export const IconInformationContainer = styled.div`
@@ -39,7 +39,7 @@ export const IconImage = styled.div<IconInformationContainerProps>`
   padding: .8rem;
 
   background: ${props => {
-    const { theme: { colors }, "icon-color": iconColor } = props;
+    const { theme: { colors }, "data-icon-color": iconColor } = props;
 
     switch(iconColor) {
 

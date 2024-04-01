@@ -39,6 +39,7 @@ export const defaultTheme = {
       m: "1.6rem",
       l: "1.8rem",
       xl: "2rem",
+      xxl: "2.2rem",
       g: "2.4rem",
       xg: "3.2rem",
       xxg: "4.8rem",

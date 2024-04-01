@@ -15,7 +15,7 @@ export const CoffeeTagContainer = styled.span<CoffeeTagContainerProps>`
   
   font-size: ${props => props.theme.font.size.xxs};
   font-weight: ${props => props.theme.font.weight.bold};
-  line-height: ${props => props.theme["line-height"].default};
+  line-height: ${props => props.theme["line-height"].common};
 
   border-radius: 100px;
 

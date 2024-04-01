@@ -20,7 +20,7 @@ export function IconInformation({
   return (
     <IconInformationContainer>
       <IconImage
-        icon-color={iconColor}
+        data-icon-color={iconColor}
       >
         <IconSvg/>
       </IconImage>

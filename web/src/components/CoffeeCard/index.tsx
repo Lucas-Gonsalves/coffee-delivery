@@ -1,8 +1,11 @@
-import { CoffeeCardContianer, ImageTagContent, Price, PriceBuyActions, TitleContent } from "./styles";
+import { BuyActions, CoffeeCardContianer, ImageTagContent, Price, PriceBuyActionsContent, Tags, TitleContent } from "./styles";
 
 import { TagColors } from "../CoffeeTag/styles";
 
 import { CoffeeTag } from "../CoffeeTag";
+import { ButtonMarket } from "../ButtonMarket";
+import { useState } from "react";
+import { InputCounter } from "../InputCounter";
 
 
 interface CoffeeCard {
@@ -26,6 +29,37 @@ export function CoffeeCard({
   "card-price": price,
 
 }: CoffeeCard) {
+  const [ counter, setCouter ] = useState<string>("0");
+
+
+  function onClickInputCounter(action: "increase" | "decrease"): void {
+
+    if(action === "increase") {
+      setCouter(prevState => (parseInt(prevState) + 1).toString());
+    
+    }else if(action === "decrease" && parseInt(counter) > 0) {
+      setCouter(prevState => (parseInt(prevState) - 1).toString());
+    };
+
+    return;
+  };
+
+
+  function onClickButtonMarket() {
+
+    const cardData = {
+      imageSrc: imageSrc,
+      imageAlt: imageAlt,
+      tagsTitle: tagsTitle,
+      tagsColor: tagsColor,
+      description: description,
+      quantity: parseInt(counter),
+      price: parseInt(price),
+    };
+
+    console.log({[title]: cardData});
+    return;
+  };
 
   return (
     <CoffeeCardContianer>
@@ -33,15 +67,18 @@ export function CoffeeCard({
       <ImageTagContent>
         <img src={imageSrc} alt={imageAlt} />
 
-        {
-          tagsTitle.map((tagTitle) => (
-            tagTitle && 
-              <CoffeeTag 
-                tag-title={tagTitle} 
-                tag-color={tagsColor}
-              />
-          ))
-        }
+        <Tags>
+          {
+            tagsTitle.map((tagTitle) => (
+              tagTitle && 
+                <CoffeeTag 
+                  key={`key_tag_${tagTitle}`}
+                  tag-title={tagTitle} 
+                  tag-color={tagsColor}
+                />
+            ))
+          }
+        </Tags>
 
       </ImageTagContent>
 
@@ -50,18 +87,24 @@ export function CoffeeCard({
         <p>{description}</p>
       </TitleContent>
     
-      <PriceBuyActions>
+      <PriceBuyActionsContent>
         <Price>
-          <span>R$</span>
+          <span>R$ </span>
           <strong>{price}</strong>
         </Price>
 
-        {
-          //IconMarket
-          //QuantitySet
-        }
+        <BuyActions>
+          <ButtonMarket
+            onClick={onClickButtonMarket}
+          />
 
-      </PriceBuyActions>
+          <InputCounter
+            counter-value={counter}
+            onClickInputCounter={onClickInputCounter}
+          />
+        </BuyActions>
+
+      </PriceBuyActionsContent>
     </CoffeeCardContianer>
   );
 };

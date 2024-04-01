@@ -19,6 +19,9 @@ export const GlobalStyle = createGlobalStyle`
     font-family: ${props => props.theme.font.family.default};
     line-height: ${props => props.theme["line-height"].default};
     -webkit-font-smoothing: antialiased;
+
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    touch-action: manipulation;
   }
   
   body, input, text-area, button {

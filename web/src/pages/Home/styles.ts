@@ -4,7 +4,7 @@ export const HomeContainer = styled.div`
   width: 100%;
   min-width: 32rem;
 
-  height: 100%;
+  height: max-content;
 
   padding: 2rem;
 
