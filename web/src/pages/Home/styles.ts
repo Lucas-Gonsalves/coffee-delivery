@@ -9,7 +9,7 @@ export const HomeContainer = styled.div`
   padding: 2rem;
 
   @media (min-width: ${props => props.theme["device-breackpoints"].m}) {
-    padding: 19.8rem 4rem;
+    padding: 0 4rem;
   }
 `;
 
@@ -18,6 +18,8 @@ export const WelcomeContent = styled.section`
   max-width: 48rem;
   
   margin: 0 auto;
+
+  padding-top: 10.8rem;
 
   display: flex;
   flex-direction: column-reverse;

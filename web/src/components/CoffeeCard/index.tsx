@@ -35,10 +35,10 @@ export function CoffeeCard({
   function onClickInputCounter(action: "increase" | "decrease"): void {
 
     if(action === "increase") {
-      setCouter(prevState => (parseInt(prevState) + 1).toString());
+      setCouter(prevState => (Number(prevState) + 1).toString());
     
-    }else if(action === "decrease" && parseInt(counter) > 0) {
-      setCouter(prevState => (parseInt(prevState) - 1).toString());
+    }else if(action === "decrease" && Number(counter) > 0) {
+      setCouter(prevState => (Number(prevState) - 1).toString());
     };
 
     return;

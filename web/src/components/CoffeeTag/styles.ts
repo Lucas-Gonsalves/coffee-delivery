@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 
-export type TagColors = "yellow" | "yellow-dark" | "purple" | "brown";;
+export type TagColors = "yellow" | "yellow-dark" | "purple" | "brown";
 
 interface CoffeeTagContainerProps {
   "data-tag-color"?: TagColors;

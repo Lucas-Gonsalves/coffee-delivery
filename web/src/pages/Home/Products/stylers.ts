@@ -19,6 +19,10 @@ export const ProductsContainer = styled.main`
 
   section {
     padding-top: 5.4rem;
+  }
+
+  section ul {
+    list-style: none;
 
     display: flex;
     align-items: center;
@@ -46,7 +50,7 @@ export const ProductsContainer = styled.main`
       font-size: ${props => props.theme.font.size.g};
     }
 
-    section {
+    section ul {
       justify-content: flex-start;
       gap: 2.4rem .9rem;
 
@@ -61,7 +65,7 @@ export const ProductsContainer = styled.main`
       font-size: ${props => props.theme.font.size.xg};
     }
 
-    section {
+    section ul {
       justify-content: space-between;
 
     }
@@ -74,7 +78,7 @@ export const ProductsContainer = styled.main`
       font-size: ${props => props.theme.font.size.xxg};
     }
 
-    section {
+    section ul {
       gap: 3.2rem;
       justify-content: flex-start;
     }
