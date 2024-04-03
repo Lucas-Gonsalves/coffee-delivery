@@ -26,10 +26,11 @@ export function ButtonMarket({
     return;
   };
 
+
   return(
     <ButtonMarketContainer
       onClick={
-        () => { handleOnClick(), changeIsActive() }
+        () => {handleOnClick(), changeIsActive()}
       }
     > 
       <ButtonMarketHoverContainer

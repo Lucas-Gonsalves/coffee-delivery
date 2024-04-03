@@ -1,6 +1,7 @@
-import { HomeContainer, WelcomeContent } from "./styles";
+import { HomeContainer, PresentationBackground, WelcomeContent, WelcomeContentLogo } from "./styles";
 
-import coffeeDeliveryLogoBig from "../../assets/background/coffe-delivey-logo-big.svg";
+import coffeeDeliveryLogoBig from "../../assets/logos/coffe-delivey-logo-big.svg";
+import backgroundBlurPresentation from "../../assets/background/blur-background-presentation.svg"
 
 import { Presentation } from "./Presentation";
 import { Products } from "./Products";
@@ -11,15 +12,21 @@ export function Home() {
   return (
     <HomeContainer>
 
-      <Header/>
-      <WelcomeContent>
+      <main>
+        <Header/>
 
+        <WelcomeContent>
+          <PresentationBackground
+            src={backgroundBlurPresentation}
+          />
+          
           <Presentation/>
-          <img src={coffeeDeliveryLogoBig} alt="Logo Coffe Delivery" />
+          <WelcomeContentLogo src={coffeeDeliveryLogoBig} alt="Logo Coffe Delivery" />
+        
+        </WelcomeContent>
 
-      </WelcomeContent>
-
-      <Products/>
+        <Products/>
+      </main>
 
     </HomeContainer>
   );

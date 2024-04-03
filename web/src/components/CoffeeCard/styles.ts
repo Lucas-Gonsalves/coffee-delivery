@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const CoffeeCardContianer = styled.div`
   width: 25.6rem;
-  height: 33.2rem;
+  height: 31rem;
 
   display: flex;
   flex-direction: column;
@@ -15,50 +15,14 @@ export const CoffeeCardContianer = styled.div`
   background: ${props => props.theme.colors["white-300"]};
   border-radius: 6px 36px;
 
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.2);
 
-  @media (min-width: ${props => props.theme["device-breackpoints"].s}) {
+  transition: .3s ease;
 
-    h1 {
-      font-size: ${props => props.theme.font.size.xg};
-    }
-    
-    p {
-      font-size: ${props => props.theme.font.size.m};
-    }
-  }
-  
-  @media (min-width: ${props => props.theme["device-breackpoints"].m}) {    
-    text-align: start;
-
-    h1 {
-      font-size: ${props => props.theme.font.size.g};
-    }
-    
-    p {
-      font-size: ${props => props.theme.font.size.s};
-    }
-  }
-
-  @media (min-width: ${props => props.theme["device-breackpoints"].l}) {    
-
-    h1 {
-      font-size: ${props => props.theme.font.size.xg};
-    }
-
-    p {
-      font-size: ${props => props.theme.font.size.m};
-    }
-  }
-
-  @media (min-width: ${props => props.theme["device-breackpoints"].xl}) {
-    
-    h1 {
-      font-size: ${props => props.theme.font.size.xxg};
-    }
-
-    p {
-      font-size: ${props => props.theme.font.size.xl};
-    }
+  &:hover {
+    transition: .3s ease;
+    transform: scale(.95);
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.4);
   }
 `;
 
@@ -74,22 +38,33 @@ export const ImageTagContent = styled.div`
     width: 12rem;
     height: 12rem;
 
-    margin-top: -4rem;
+    margin-top: -5rem;
+    transition: .6s;
+  }
+
+  img:hover {
+    transition: .6s;
+
+    transform: rotate(-120deg);
   }
 `;
 
-export const Tags = styled.div`
+
+export const Tags = styled.ul`
   display: flex;
   align-items: center;
   justify-content: center;
 
   flex-wrap: wrap;
 
+  list-style: none;
+
   gap: .4rem;
 `;
 
 export const TitleContent = styled.div`
   text-align: center;
+
 
   h3 {
     padding-top: 1.6rem;
@@ -107,10 +82,9 @@ export const TitleContent = styled.div`
     font-weight: ${props => props.theme.font.weight.medium};
   }
 
-
   @media (min-width: ${props => props.theme["device-breackpoints"].s}) {
     
-    h1 {
+    h3 {
       font-size: ${props => props.theme.font.size.l};
     }
     
@@ -121,8 +95,16 @@ export const TitleContent = styled.div`
   
   @media (min-width: ${props => props.theme["device-breackpoints"].m}) {
 
-    h1 {
+    h3 {
       font-size: ${props => props.theme.font.size.xl};
+    }
+  }
+
+
+  @media (min-width: ${props => props.theme["device-breackpoints"].l}) {    
+
+    h1 {
+      font-size: ${props => props.theme.font.size.xg};
     }
   }
 `;
@@ -149,6 +131,7 @@ export const Price = styled.div`
     font-size: ${props => props.theme.font.size.xl};
     font-weight: ${props => props.theme.font.weight.extraBold};
   }
+
 
   @media (min-width: ${props => props.theme["device-breackpoints"].m}) {
     span {

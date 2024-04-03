@@ -29,6 +29,7 @@ export function CoffeeCard({
   "card-price": price,
 
 }: CoffeeCard) {
+  
   const [ counter, setCouter ] = useState<string>("0");
 
 
@@ -71,11 +72,12 @@ export function CoffeeCard({
           {
             tagsTitle.map((tagTitle) => (
               tagTitle && 
-                <CoffeeTag 
-                  key={`key_tag_${tagTitle}`}
-                  tag-title={tagTitle} 
-                  tag-color={tagsColor}
-                />
+                <li key={`key_tag_${tagTitle}`}>
+                  <CoffeeTag 
+                    tag-title={tagTitle} 
+                    tag-color={tagsColor}
+                  />
+                </li>
             ))
           }
         </Tags>

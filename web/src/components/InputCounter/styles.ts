@@ -9,10 +9,19 @@ export const InputCounterContainer = styled.div`
   gap: .4rem;
 
   padding: .8rem 1.2rem;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0);
+
 
   background: ${props => props.theme.colors["white-500"]};
   border-radius: 6px;
+  
+  transition: box-shadow .8s;
 
+  &:hover {
+    transition: box-shadow .3s;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
+
+  }
 
   input {
     max-width: 2rem;
@@ -42,24 +51,28 @@ export const InputCounterContainer = styled.div`
     background: none;
 
     transform: scale(0.95);
-    transition: .3s ease;
+    transition: transform .3s;
 
     svg {
-      transition: .3s ease;
+      border-radius: 50%;
+      padding: .1rem;
+
       color: ${props => props.theme.colors["purple-200"]};
     }
 
     &:hover {
 
       svg {
-        transition: .3s ease;
+        transform: scale(1);
+        transition: transform .3s;
+
         color: ${props => props.theme.colors["purple-300"]};
       }
     }
 
     &:active {
       transform: scale(1.5);
-      transition: .3s ease;
+      transition: transform .3s;
     }
   }
 
@@ -70,7 +83,6 @@ export const InputCounterContainer = styled.div`
 
   @media (min-width: ${props => props.theme["device-breackpoints"].m}) {
     
-
     input {
       font-size: ${props => props.theme.font.size.m};
     }

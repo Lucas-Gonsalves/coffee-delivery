@@ -4,6 +4,7 @@ interface ButtonMarketContainerProps {
   "data-is-button-active": boolean
 }
 
+
 export const ButtonMarketContainer = styled.button`
   width: max-content;
   height: min-content;
@@ -19,7 +20,6 @@ export const ButtonMarketContainer = styled.button`
   border-color: ${props => props.theme.colors["purple-200"]};
 
   background: none;
-
   border-radius: 12px;
 
   cursor: pointer;
@@ -28,16 +28,18 @@ export const ButtonMarketContainer = styled.button`
   align-items: center;
   justify-content: center;
 
+
   svg {
     width: 1.8rem;
     height: 1.8rem;
-
 
     color: ${props => props.theme.colors["purple-200"]};
     transition: .5s ease;
   }
 
+  
   &:hover {
+    transform: scale(.9);
   
     svg {
       transition: .5s ease;
@@ -52,7 +54,7 @@ export const ButtonMarketContainer = styled.button`
 
   &:active {
     transition: .5s ease;
-    transform: scale(1.1)
+    transform: scale(1);
   }
 
   @media (min-width: ${props => props.theme["device-breackpoints"].m}) {

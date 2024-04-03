@@ -1,5 +1,5 @@
 import { CoffeeCard } from "../../../components/CoffeeCard";
-import { ProductsContainer } from "./stylers";
+import { Cards, ProductsContainer } from "./styles";
 
 
 import { database } from "../../../test/database";
@@ -8,11 +8,11 @@ import { database } from "../../../test/database";
 export function Products() {
   return(
     <ProductsContainer>
-      <h1>Nossos cafés</h1>
+      <h2>Nossos cafés</h2>
 
       <section>
 
-        <ul>
+        <Cards>
           {
             database.coffees.length > 0 && 
 
@@ -32,7 +32,8 @@ export function Products() {
 
               ))
           }
-        </ul>
+        </Cards>
+        
       </section>
     </ProductsContainer>
   );

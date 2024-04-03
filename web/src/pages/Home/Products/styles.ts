@@ -4,9 +4,10 @@ import styled from "styled-components";
 export const ProductsContainer = styled.main`
   width: 100%;
 
-  padding-top: 7.2rem;
+  padding-top: 14rem;
 
-  h1 {
+  
+  h2 {
     text-align: center;
 
     font-family: ${props => props.theme.font.family.title};
@@ -21,66 +22,63 @@ export const ProductsContainer = styled.main`
     padding-top: 5.4rem;
   }
 
-  section ul {
-    list-style: none;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    flex-wrap: wrap;
-    gap: 2.4rem;
-  }
-
   
   @media (min-width: ${props => props.theme["device-breackpoints"].s}) {
     
-    h1 {
+    h2 {
       font-size: ${props => props.theme.font.size.xg};
     }
   }
   
   @media (min-width: ${props => props.theme["device-breackpoints"].m}) {
-    max-width: 78.6rem;
-    margin: auto;
 
-
-    h1 {
+    h2 {
       text-align: start;
       font-size: ${props => props.theme.font.size.g};
-    }
-
-    section ul {
-      justify-content: flex-start;
-      gap: 2.4rem .9rem;
-
     }
   }
 
   @media (min-width: ${props => props.theme["device-breackpoints"].l}) {
-    max-width: 90.88rem;
 
-
-    h1 {
+    h2 {
       font-size: ${props => props.theme.font.size.xg};
-    }
-
-    section ul {
-      justify-content: space-between;
-
     }
   }
 
   @media (min-width: ${props => props.theme["device-breackpoints"].xl}) {
-    max-width: 113.2rem;
 
-    h1 {
-      font-size: ${props => props.theme.font.size.xxg};
+    h2 {
+      font-size: ${props => props.theme.font.size.xg};
     }
+  }
+`;
 
-    section ul {
-      gap: 3.2rem;
-      justify-content: flex-start;
+
+export const Cards = styled.ul `
+  list-style: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-wrap: wrap;
+  gap: 4rem 2.4rem;
+
+  > li {
+    &:nth-child(odd) {
+      > div > div:first-child > img:hover {
+        transform: rotate(120deg);
+      }
     }
+  }
+  
+  
+  @media (min-width: ${props => props.theme["device-breackpoints"].m}) {
+    justify-content: space-between;
+  }
+  
+  @media (min-width: ${props => props.theme["device-breackpoints"].xl}) {
+    gap: 3.2rem;
+    justify-content: flex-start;
   }
 `;

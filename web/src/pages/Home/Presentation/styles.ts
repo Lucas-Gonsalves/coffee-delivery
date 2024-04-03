@@ -1,4 +1,23 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+
+const scaleAnimation = keyframes`
+  0% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+
+  50% {
+    transform: scale(.99);
+    filter: brightness(1.6);
+
+  }
+
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+`;
 
 
 export const PresentationContainer = styled.div`
@@ -15,6 +34,8 @@ export const PresentationContainer = styled.div`
 
 export const TitleSet = styled.div`
   text-align: center;
+
+  animation: ${scaleAnimation} 5s ease infinite;
 
   h1 {
     max-width: 37rem;
@@ -55,6 +76,7 @@ export const TitleSet = styled.div`
     text-align: start;
 
     h1 {
+      max-width: 31rem;
       margin: 0 0 1.6rem;
       font-size: ${props => props.theme.font.size.g};
     }
@@ -107,6 +129,9 @@ export const IconsSet = styled.div`
   gap: 1.6rem;
   margin: 0 auto;
 
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+
+
   > div {
     width: 23.2rem;
     display: flex;
@@ -123,6 +148,8 @@ export const IconsSet = styled.div`
   @media (min-width: ${props => props.theme["device-breackpoints"].l}) {
     width: 100%;
     background: none;
+
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.0);
 
 
     flex-direction: row;

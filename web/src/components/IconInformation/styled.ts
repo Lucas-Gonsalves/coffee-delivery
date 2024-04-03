@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import { TagColors } from "../CoffeeTag/styles";
 
 interface IconInformationContainerProps {
-  "data-icon-color"?: "yellow" | "yellow-dark" | "purple" | "brown";
+  "data-icon-color"?: TagColors;
 };
 
 export const IconInformationContainer = styled.div`
@@ -10,9 +11,23 @@ export const IconInformationContainer = styled.div`
   display: flex;
   align-items: center;
 
+  transition: transform .3s;
 
   gap: 1.2rem;
 
+  transition: .3s ease;
+  filter: opacity(.85);
+
+  &:hover {
+    transition: .3s ease;
+    transform: scale(1.02);
+    filter: opacity(1);
+  }
+
+  &:active {
+    transition: .3s ease;
+    transform: scale(1);
+  }
 
   p {
     font-size: ${props => props.theme.font.size.xs};

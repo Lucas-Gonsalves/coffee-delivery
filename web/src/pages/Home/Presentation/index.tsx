@@ -1,7 +1,6 @@
 import { PresentationContainer, TitleSet, IconsSet } from "./styles";
 
 import { PiCoffeeFill, PiPackageFill, PiShoppingCartFill, PiTimerFill } from "react-icons/pi";
-
 import { IconInformation } from "../../../components/IconInformation";
 
 
@@ -44,7 +43,6 @@ export function Presentation() {
             />
           </div>
         </IconsSet>
-
     </PresentationContainer>
   );
 };

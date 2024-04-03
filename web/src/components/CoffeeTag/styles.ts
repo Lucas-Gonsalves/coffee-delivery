@@ -7,6 +7,7 @@ interface CoffeeTagContainerProps {
   "data-tag-color"?: TagColors;
 };
 
+
 export const CoffeeTagContainer = styled.span<CoffeeTagContainerProps>`
   width: max-content;
   height: min-content;
@@ -18,6 +19,15 @@ export const CoffeeTagContainer = styled.span<CoffeeTagContainerProps>`
   line-height: ${props => props.theme["line-height"].common};
 
   border-radius: 100px;
+  
+  filter: opacity(.8);
+  transition: filter .3s;
+
+  &:hover {
+    filter: opacity(1.2);
+    transition: filter .3s;
+  }
+
 
   ${(props) => {
     const { theme: {colors}, "data-tag-color": dataTagColor } = props
