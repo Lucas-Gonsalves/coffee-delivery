@@ -20,7 +20,7 @@ export const IconInformationContainer = styled.div`
 
   &:hover {
     transition: .3s ease;
-    transform: scale(1.02);
+    transform: scale(1.01);
     filter: opacity(1);
   }
 

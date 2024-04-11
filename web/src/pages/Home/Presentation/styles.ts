@@ -4,18 +4,15 @@ import styled, { keyframes } from "styled-components";
 const scaleAnimation = keyframes`
   0% {
     transform: scale(1);
-    filter: brightness(1);
   }
 
   50% {
     transform: scale(.99);
-    filter: brightness(1.6);
 
   }
 
   100% {
     transform: scale(1);
-    filter: brightness(1);
   }
 `;
 

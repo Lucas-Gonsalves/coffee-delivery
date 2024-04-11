@@ -39,7 +39,7 @@ export const ButtonMarketContainer = styled.button`
 
   
   &:hover {
-    transform: scale(.9);
+    transform: scale(1.1);
   
     svg {
       transition: .5s ease;

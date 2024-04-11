@@ -1,10 +1,26 @@
-import { CheckoutContainer } from "./styles";
+import { CheckoutContainer, CheckoutContent } from "./styles";
+
+import { Header } from "../../components/Header";
+import { IntemsSelected } from "./ItemsSelected";
+import { OrderForm } from "./OrderForm";
 
 
 export function Checkout() {
   return (
     <CheckoutContainer>
-      <h2>Checkout</h2>
+      
+      <main>
+        <Header/>
+
+        <CheckoutContent>
+
+          <OrderForm />
+          <IntemsSelected />
+          
+        </CheckoutContent>
+
+      </main>
+
     </CheckoutContainer>
   );
 };

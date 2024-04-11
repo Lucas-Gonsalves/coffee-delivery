@@ -7,7 +7,7 @@ const cssBaseHoverAnimation = css`
 
   &:hover {
     transition: .3s ease;
-    transform: scale(.9);
+    transform: scale(1.05);
     filter: opacity(1);
   }
 
@@ -29,8 +29,16 @@ export const HeaderContainer = styled.header`
   padding: 3.3rem 0 12.5rem;
 
   img {
+    width: 7.5rem;
+
     cursor: pointer;
     ${cssBaseHoverAnimation}
+  }
+
+  @media (min-width: ${props => props.theme["device-breackpoints"].xs}) {
+    img {
+      width: 8.5rem;
+    }
   }
 `;
 
@@ -63,8 +71,8 @@ export const Adress = styled.div`
 
 
   svg {
-    width: 2rem;
-    height: 2rem;
+    width: 1.8rem;
+    height: 1.8rem;
 
     color: ${props => props.theme.colors["purple-200"]};
   }
@@ -77,18 +85,23 @@ export const Adress = styled.div`
   ${cssBaseHoverAnimation}
 
 
-  @media (min-width: ${props => props.theme["device-breackpoints"].m}) {
-
+  @media (min-width: ${props => props.theme["device-breackpoints"].xs}) {
 
     svg {
-      width: 2.2rem;
-      height: 2.2rem;
-
-      color: ${props => props.theme.colors["purple-200"]};
+      width: 2rem;
+      height: 2rem;
     }
 
     p {
       font-size: ${props => props.theme.font.size.s};
+    }
+  }  
+  
+  @media (min-width: ${props => props.theme["device-breackpoints"].m}) {
+
+    svg {
+      width: 2.2rem;
+      height: 2.2rem;
     }
   }
 `;
@@ -122,8 +135,8 @@ export const Market = styled.button`
   }
 
   svg {
-    width: 2.2rem;
-    height: 2.2rem;
+    width: 1.8rem;
+    height: 1.8rem;
     
     color: ${props => props.theme.colors["yellow-300"]};
   }
@@ -132,6 +145,20 @@ export const Market = styled.button`
 
   &:hover {
     filter: opacity(1);
+  }
+
+  @media (min-width: ${props => props.theme["device-breackpoints"].xs}) {
+    svg {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
+  @media (min-width: ${props => props.theme["device-breackpoints"].m}) {
+    svg {
+      width: 2.2rem;
+      height: 2.2rem;
+    }
   }
 `;
 

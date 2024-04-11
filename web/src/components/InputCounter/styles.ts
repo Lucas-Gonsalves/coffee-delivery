@@ -15,17 +15,20 @@ export const InputCounterContainer = styled.div`
   background: ${props => props.theme.colors["white-500"]};
   border-radius: 6px;
   
-  transition: box-shadow .8s;
+  transition: .3s;
 
   &:hover {
-    transition: box-shadow .3s;
-    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
+    transition: .3s;
 
+    transform: scale(1.03);
+
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
+    background: ${props => props.theme.colors["brown-100"]};
   }
 
   input {
     max-width: 2rem;
-      
+
     background: none;
     border: none;
     outline: none;
@@ -79,12 +82,5 @@ export const InputCounterContainer = styled.div`
   button svg {
     width: 1.4rem;
     height: 1.4rem;
-  }
-
-  @media (min-width: ${props => props.theme["device-breackpoints"].m}) {
-    
-    input {
-      font-size: ${props => props.theme.font.size.m};
-    }
   }
 `;

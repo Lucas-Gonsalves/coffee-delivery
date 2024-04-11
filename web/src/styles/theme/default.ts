@@ -8,6 +8,7 @@ export const defaultTheme = {
     "yellow-300": "#C47F17",
 
     "purple-100": "#EBE5F9",
+    "purple-150": "#e9dfff",
     "purple-200": "#8047F8",
     "purple-300": "#4B2995",
 
@@ -34,6 +35,7 @@ export const defaultTheme = {
 
     size: {
       xxs: "1rem",
+      xss: "1.1rem",
       xs: "1.2rem",
       s: "1.4rem",
       m: "1.6rem",
@@ -41,6 +43,7 @@ export const defaultTheme = {
       xl: "2rem",
       xxl: "2.2rem",
       g: "2.4rem",
+      gg: "2.8rem",
       xg: "3.2rem",
       xxg: "4.8rem",
     },
@@ -67,11 +70,12 @@ export const defaultTheme = {
 
 
   "device-breackpoints": {
-    xs: "320px",
+    xxs: "320px",
+    xs: "425px",
     s: "600px",
     m: "768px",
     l: "992px",
-    xl: "1200px",
+    xl: "1128px",
     g: "1400px",
     xg: "1600px",
     xxg: "1920px",

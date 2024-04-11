@@ -21,7 +21,7 @@ export const CoffeeCardContianer = styled.div`
 
   &:hover {
     transition: .3s ease;
-    transform: scale(.95);
+    transform: scale(.97);
     box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.4);
   }
 `;

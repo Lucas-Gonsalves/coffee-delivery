@@ -33,7 +33,6 @@ export const ProductsContainer = styled.main`
   @media (min-width: ${props => props.theme["device-breackpoints"].m}) {
 
     h2 {
-      text-align: start;
       font-size: ${props => props.theme.font.size.g};
     }
   }
@@ -48,6 +47,7 @@ export const ProductsContainer = styled.main`
   @media (min-width: ${props => props.theme["device-breackpoints"].xl}) {
 
     h2 {
+      text-align: start;
       font-size: ${props => props.theme.font.size.xg};
     }
   }
@@ -68,17 +68,18 @@ export const Cards = styled.ul `
     &:nth-child(odd) {
       > div > div:first-child > img:hover {
         transform: rotate(120deg);
+        
       }
     }
   }
   
   
   @media (min-width: ${props => props.theme["device-breackpoints"].m}) {
-    justify-content: space-between;
+    justify-content: space-evenly;
   }
   
   @media (min-width: ${props => props.theme["device-breackpoints"].xl}) {
-    gap: 3.2rem;
-    justify-content: flex-start;
+    gap: 3.2rem .8rem;
+    justify-content: space-between;
   }
 `;
