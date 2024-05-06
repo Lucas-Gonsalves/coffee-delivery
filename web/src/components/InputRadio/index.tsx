@@ -8,6 +8,7 @@ interface InputRadioProps extends InputHTMLAttributes<HTMLInputElement> {
   "label-input-id": string;
   "radio-group": string;
   "radio-value": string;
+  "error"?: boolean;
 }
 
 
@@ -19,6 +20,8 @@ export const InputRadio = forwardRef<HTMLInputElement, InputRadioProps >((
     "radio-group": group,
     "radio-value": value,
     "label-input-id": htmlFor,
+    error = false,
+    ...rest
 
   },
   
@@ -31,6 +34,7 @@ export const InputRadio = forwardRef<HTMLInputElement, InputRadioProps >((
     <InputRadioContainer
       htmlFor={htmlFor}
       id={id}
+      aria-invalid={error}
     >
 
 
@@ -40,9 +44,12 @@ export const InputRadio = forwardRef<HTMLInputElement, InputRadioProps >((
         name={group}
         value={value}
         ref={ref}
+        {...rest}
       />
 
-      <InputRadioContent>
+      <InputRadioContent
+        aria-invalid={error}
+      >
         <div/>
         
         {

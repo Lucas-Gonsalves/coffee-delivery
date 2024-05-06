@@ -1,20 +1,22 @@
-import { TagColors } from "../components/CoffeeTag/styles"
+import { TagColors } from "../components/Tag/styles"
 
 import { assetsImports } from "./assetsImports";
 const { coffees } = assetsImports;
 
-interface CoffeesProps {
+export interface CoffeeDatabaseProps {
+  id: number;
+  section: "coffees";
   imageSrc: string;
   imageAlt: string;
-  price: string;
+  price: number;
   tagsTitle: [string, string?, string?];
   tagsColor: TagColors;
   title: string;
   description: string;
 }
 
-interface DatabaseProps {
-  coffees: CoffeesProps[];
+export interface DatabaseProps {
+  coffees: CoffeeDatabaseProps[];
 };
 
 export const database: DatabaseProps = {
@@ -22,9 +24,11 @@ export const database: DatabaseProps = {
   coffees : [
 
     {
+      id: 1,
+      section: "coffees",
       imageSrc: coffees.express.traditional,
       imageAlt: "imagem de um café-expresso-tradicional",
-      price: "9,90",
+      price: 9.90,
       tagsTitle: ["TRADICIONAL"],
       tagsColor: "yellow",
       title: "Expresso Tradicional",
@@ -32,9 +36,11 @@ export const database: DatabaseProps = {
     },
     
     {
+      id: 2,
+      section: "coffees",
       imageSrc: coffees.express.american,
       imageAlt: "imagem de um café-expresso-americano",
-      price: "15,40",
+      price: 15.40,
       tagsTitle: ["TRADICIONAL"],
       tagsColor: "yellow",
       title: "Expresso Americano",
@@ -43,9 +49,11 @@ export const database: DatabaseProps = {
     },
   
     {
+      id: 3,
+      section: "coffees",
       imageSrc: coffees.express.creamy,
       imageAlt: "imagem de um café-expresso-cremoso",
-      price: "7,50",
+      price: 7.50,
       tagsTitle: ["TRADICIONAL"],
       tagsColor: "yellow",
       title: "Expresso Cremoso",
@@ -53,9 +61,11 @@ export const database: DatabaseProps = {
     },
   
     {
+      id: 4,
+      section: "coffees",
       imageSrc: coffees.express.cold,
       imageAlt: "imagem de um café-expresso-gelado",
-      price: "11,20",
+      price: 11.20,
       tagsTitle: ["TRADICIONAL", "GELADO"],
       tagsColor: "yellow",
       title: "Expresso Gelado",
@@ -63,9 +73,11 @@ export const database: DatabaseProps = {
     },
   
     {
+      id: 5,
+      section: "coffees",
       imageSrc: coffees.express.milk,
       imageAlt: "imagem de um café-com-leite",
-      price: "6,60",
+      price: 6.60,
       tagsTitle: ["TRADICIONAL", "COM LEITE"],
       tagsColor: "yellow",
       title: "Café com Leite",
@@ -73,9 +85,11 @@ export const database: DatabaseProps = {
     },
   
     {
+      id: 6,
+      section: "coffees",
       imageSrc: coffees.latte,
       imageAlt: "imagem de um café-latte",
-      price: "13,16",
+      price: 13.16,
       tagsTitle: ["TRADICIONAL", "COM LEITE"],
       tagsColor: "yellow",
       title: "Latte",
@@ -83,9 +97,11 @@ export const database: DatabaseProps = {
     },
   
     {
+      id: 7,
+      section: "coffees",
       imageSrc: coffees.capuccino,
       imageAlt: "imagem de um café-capuccino",
-      price: "16,40",
+      price: 16.40,
       tagsTitle: ["TRADICIONAL", "COM LEITE"],
       tagsColor: "yellow",
       title: "Capuccino",
@@ -93,9 +109,11 @@ export const database: DatabaseProps = {
     },
   
     {
+      id: 8,
+      section: "coffees",
       imageSrc: coffees.macchiato,
       imageAlt: "imagem de um café-macchiato",
-      price: "13,90",
+      price: 13.90,
       tagsTitle: ["TRADICIONAL", "COM LEITE"],
       tagsColor: "yellow",
       title: "Macchiato",
@@ -103,9 +121,11 @@ export const database: DatabaseProps = {
     },
   
     {
+      id: 9,
+      section: "coffees",
       imageSrc: coffees.mocaccino,
       imageAlt: "imagem de um café-mochaccino",
-      price: "12,30",
+      price: 12.30,
       tagsTitle: ["TRADICIONAL", "COM LEITE"],
       tagsColor: "yellow",
       title: "Mocaccino",
@@ -113,9 +133,11 @@ export const database: DatabaseProps = {
     },
   
     {
+      id: 10,
+      section: "coffees",
       imageSrc: coffees.especials.hotChocolate,
       imageAlt: "imagem de um chocolate-quente",
-      price: "11,50",
+      price: 11.50,
       tagsTitle: ["ESPECIAL", "COM LEITE"],
       tagsColor: "yellow",
       title: "Chocolate Quente",
@@ -123,9 +145,11 @@ export const database: DatabaseProps = {
     },
   
     {
+      id: 11,
+      section: "coffees",
       imageSrc: coffees.especials.cuban,
       imageAlt: "imagem de um café-cubano",
-      price: "19,10",
+      price: 19.10,
       tagsTitle: ["ESPECIAL", "ALCOÓLICO", "GELADO"],
       tagsColor: "yellow",
       title: "Cubano",
@@ -133,9 +157,11 @@ export const database: DatabaseProps = {
     },
   
     {
+      id: 12,
+      section: "coffees",
       imageSrc: coffees.especials.havaian,
       imageAlt: "imagem de um café-havaiano",
-      price: "16,90",
+      price: 16.90,
       tagsTitle: ["ESPECIAL"],
       tagsColor: "yellow",
       title: "Havaiano",
@@ -144,9 +170,11 @@ export const database: DatabaseProps = {
   
     {
   
+      id: 13,
+      section: "coffees",
       imageSrc: coffees.especials.arabian,
       imageAlt: "imagem de um café-arábico",
-      price: "22,50",
+      price: 22.50,
       tagsTitle: ["ESPECIAL"],
       tagsColor: "yellow",
       title: "Árabe",
@@ -154,9 +182,11 @@ export const database: DatabaseProps = {
     },
     
     {
+      id: 14,
+      section: "coffees",
       imageSrc: coffees.especials.irlan,
       imageAlt: "imagem de um café-irlandês",
-      price: "15,80",
+      price: 15.80,
       tagsTitle: ["ESPACIAL", "ALCOÓLICO"],
       tagsColor: "yellow",
       title: "Irlandês",

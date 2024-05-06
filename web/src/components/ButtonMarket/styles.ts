@@ -42,19 +42,19 @@ export const ButtonMarketContainer = styled.button`
     transform: scale(1.1);
   
     svg {
-      transition: .5s ease;
+      transition: color .5s ease;
       color: ${props => props.theme.colors["white-300"]};
     }
 
     div {
-      transition: .5s ease;
+      transition: transform .5s ease;
       transform: scale(1);
     }
   }
 
   &:active {
-    transition: .5s ease;
-    transform: scale(1);
+    transition: .3s ease;
+    transform: scale(0.85);
   }
 
   @media (min-width: ${props => props.theme["device-breackpoints"].m}) {

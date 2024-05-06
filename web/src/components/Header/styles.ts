@@ -7,13 +7,12 @@ const cssBaseHoverAnimation = css`
 
   &:hover {
     transition: .3s ease;
-    transform: scale(1.05);
     filter: opacity(1);
   }
 
   &:active {
     transition: .3s ease;
-    transform: scale(1);
+    filter: opacity(.7);
   }
 `
 
@@ -163,13 +162,10 @@ export const Market = styled.button`
 `;
 
 
-export const MarketNotification = styled.span`
+export const MarketNotification = styled.div`
   width: 2rem;
   height: 2rem;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
   background: ${props => props.theme.colors["yellow-300"]};
 
@@ -180,11 +176,17 @@ export const MarketNotification = styled.span`
   top: -.9rem;
 
   border-radius: 50%;
-  padding: .4rem;
-
-  color: ${props => props.theme.colors["white-300"]};
   
-  font-size: ${props => props.theme.font.size.xs};
-  font-weight: ${props => props.theme.font.weight.bold};
-  font-family: ${props => props.theme.font.family.default};
+  span {
+    width: min-content;
+    height: min-content;
+
+    text-align: center;
+
+    color: ${props => props.theme.colors["white-300"]};
+    
+    font-size: ${props => props.theme.font.size.xxs};
+    font-weight: ${props => props.theme.font.weight.bold};
+    font-family: ${props => props.theme.font.family.default};
+  }
 `;

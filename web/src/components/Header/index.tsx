@@ -5,25 +5,67 @@ import coffeeLogo from "../../assets/logos/coffe-delivery-header.svg";
 import { PiMapPinFill } from "react-icons/pi";
 import { PiShoppingCartFill } from "react-icons/pi";
 
+import { useNavigate, useLocation } from "react-router-dom";
+import { useMarketContext } from "../../contexts/market/market.use.context";
+
 
 export function Header() {
+
+  const { getCart } = useMarketContext();
+
+  const navigate = useNavigate();
+  const { pathname: currentPath } = useLocation();
+
+  function goToHome(): void {
+    
+    if(currentPath !== "/") {
+      navigate("/");
+    
+    } else {
+      window.location.reload();
+    };
+    return;
+  };
+
+  function goToCheckout(): void {
+    
+    if(currentPath !== "/checkout") {
+      navigate("/checkout");
+
+    } else {
+      window.location.reload();
+    };;
+
+    return;
+  };
+
+  const LenghtOfAllCartProducts = getCart("length-products").toString();
+
   return(
     <HeaderContainer>
 
-      <img src={coffeeLogo} />
+      <img src={coffeeLogo} 
+        onClick={() => goToHome()}
+      />
 
-      <AdressMarketSet>
+      <AdressMarketSet
+        onClick={() => goToCheckout()}
+      >
         <Adress>
           <PiMapPinFill/>
           <p>Guaramirim, SC</p>
         </Adress>
 
 
-        <Market>
+        <Market
+          onClick={() => goToCheckout()}
+        >
           <PiShoppingCartFill/>
 
           <MarketNotification>
-            3
+            <span>
+              {LenghtOfAllCartProducts}
+            </span>
           </MarketNotification>
 
         </Market>

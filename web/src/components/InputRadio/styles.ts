@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 
+
+
 export const InputRadioContainer = styled.label`
   width: 100%;
   height: min-content;
@@ -9,7 +11,7 @@ export const InputRadioContainer = styled.label`
   align-items: center;
   justify-content: center;
 
-  background: ${props => props.theme.colors["white-400"]};
+  background: ${(props) => props.theme.colors["white-400"]};
 
   z-index: 0;
   position: relative;
@@ -18,13 +20,28 @@ export const InputRadioContainer = styled.label`
 
   cursor: pointer;
 
+
+
+  > input + div {
+    border-style: solid;
+    border-width: 1px;
+    border-color:  transparent;
+  }
+  
   > input:checked + div {
 
     transition: .8s ease;
 
     border-style: solid;
     border-width: 1px;
-    border-color: ${props => props.theme.colors["purple-200"]};
+    border-color: ${(props) => {
+   
+    if(props["aria-invalid"]){
+      return props.theme.colors["red-50"]
+    }
+    
+    return props.theme.colors["purple-200"]}
+  };
 
     div {
       width: 100%;
@@ -54,8 +71,9 @@ export const InputRadioContent = styled.div`
   justify-content: center;
   
   gap: .8rem;
-  padding: 1.1rem;
+  padding: .88rem;
   
+
   background: transparent;
 
   border-width: 1px;
@@ -78,8 +96,14 @@ export const InputRadioContent = styled.div`
     
     position: absolute;
 
-
-    background: ${props => props.theme.colors["purple-150"]};
+    background: ${(props) => {
+    
+      if(props["aria-invalid"]) {
+        return props.theme.colors["red-75"]
+      }
+      
+      return props.theme.colors["purple-150"]
+    }};
     
     transition: .8s;
     border-radius: 6px;
@@ -96,7 +120,15 @@ export const InputRadioContent = styled.div`
     width: 1.6rem;
     height: 1.6rem;
 
-    color: ${props => props.theme.colors["purple-200"]};
+    
+    color: ${(props) => {
+   
+      if(props["aria-invalid"]){
+        return props.theme.colors["red-100"]
+      }
+      
+      return props.theme.colors["purple-200"]}
+    };
   }
 
   span {
@@ -105,10 +137,33 @@ export const InputRadioContent = styled.div`
   }
   
   
-  @media (min-width: ${props => props.theme["device-breackpoints"].s}) {
-    padding: 1.3rem;
-  } 
+  @media (min-width: ${props => props.theme["device-breackpoints"].xs}) {
+    padding: 1.31rem;
   
+    span {
+      font-size: ${props => props.theme.font.size.s};
+    }
+
+    svg {
+      width: 1.8rem;
+      height: 1.8rem;
+    }
+  } 
+
+  
+  @media (min-width: ${props => props.theme["device-breackpoints"].s}) {
+    padding: .98rem;
+
+    span {
+      font-size: ${props => props.theme.font.size.xs};
+    }
+  
+    svg {
+      width: 1.6rem;
+      height: 1.6rem;
+    }
+  }
+
   @media (min-width: ${props => props.theme["device-breackpoints"].m}) {
     padding: 1.5rem .6rem;
 
@@ -119,6 +174,12 @@ export const InputRadioContent = styled.div`
     svg {
       width: 1.6rem;
       height: 1.6rem;
+    }
+  }
+
+  @media (min-width: ${props => props.theme["device-breackpoints"].xl}) {
+    span {
+      text-transform: uppercase;
     }
   }
 `;

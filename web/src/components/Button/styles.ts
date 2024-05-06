@@ -1,7 +1,12 @@
 import styled from "styled-components";
 
 
-export const ButtonContainer = styled.button`
+interface ButtonContainerColor {
+  "data-color-background": "yellow"| "red";
+};
+
+
+export const ButtonContainer = styled.button<ButtonContainerColor>`
   width: 100%;
   height: min-content;
 
@@ -16,7 +21,21 @@ export const ButtonContainer = styled.button`
 
   font-size: ${props => props.theme.font.size.xs};
   
-  background: rgba(219, 172, 44, 0.8);
+  background: ${(props) => {
+
+    switch(props["data-color-background"]) {
+
+      case "yellow" : {
+        return "rgba(219, 172, 44, 0.8);"
+      };
+
+      case "red" : {
+        return props.theme.colors["red-100"];
+      };
+    }
+  }};
+
+  
   color: ${props => props.theme.colors["white-100"]};
 
   transition: .3s ease;
@@ -25,22 +44,29 @@ export const ButtonContainer = styled.button`
 
   &:hover {
     transition: .3s ease;
-
-    transform: scale(1.02);
     filter: opacity(1);
 
-    &::before {
+    &:not(:disabled):before {
       transition: .6s ease;
 
       height: 100%;
       opacity: 1;
     }
-  }
 
-  &:active {
+    &:disabled {
+      background: ${props => props.theme.colors["red-200"]};
+    }
+  }
+  
+  &:not(:disabled):active {
     transition: .6s ease;
 
     transform: scale(.98);
+  }
+
+  &:disabled {
+    background: ${props => props.theme.colors["red-100"]};
+    cursor: not-allowed;
   }
 
   &::before {
@@ -61,7 +87,19 @@ export const ButtonContainer = styled.button`
     transition: .6s ease;
     border-radius: 6px;
 
-    background: ${props => props.theme.colors["yellow-200"]};
+    background: ${(props) => {
+
+      switch(props["data-color-background"]) {
+
+        case "yellow" : {
+          return props.theme.colors["yellow-200"]
+        };
+
+        case "red" : {
+          return props.theme.colors["red-200"];
+        };
+      }
+    }};
   }
 
   @media (min-width: ${props => props.theme["device-breackpoints"].s}) {

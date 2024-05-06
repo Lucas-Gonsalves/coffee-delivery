@@ -1,4 +1,4 @@
-import { CoffeeCard } from "../../../components/CoffeeCard";
+import { Card } from "../../../components/Card";
 import { Cards, ProductsContainer } from "./styles";
 
 
@@ -16,10 +16,12 @@ export function Products() {
           {
             database.coffees.length > 0 && 
 
-              database.coffees.map(coffee => (
+              database.coffees.map((coffee) => (
 
-                <li key={`coffee_key_${coffee.title}`}>
-                  <CoffeeCard
+                <li key={`card_key_${coffee.title}`}>
+                  <Card
+                    card-id={coffee.id}
+                    card-section={coffee.section}
                     card-image-src={coffee.imageSrc}
                     card-image-alt={coffee.imageAlt}
                     card-price={coffee.price}

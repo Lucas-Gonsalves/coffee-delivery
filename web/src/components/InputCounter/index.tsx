@@ -7,7 +7,7 @@ import { PiPlus, PiMinus  } from "react-icons/pi";
 
 interface InputCounterProps {
   onClickInputCounter: (action: "increase" | "decrease") => void;
-  "counter-value": string
+  "counter-value": number
 };
 
 
@@ -20,6 +20,7 @@ export function InputCounter({
 
 
   function handleOnClickInputCounter(event: MouseEvent<HTMLButtonElement>) {
+    
     const activedButton = event.currentTarget;
     const action = activedButton.getAttribute("data-action");
 
@@ -30,6 +31,7 @@ export function InputCounter({
     return;
   };
 
+  const counterValueFormated = counterValue.toString()
 
   return(
     <InputCounterContainer>
@@ -43,7 +45,7 @@ export function InputCounter({
 
       <input
         type="number"
-        value={counterValue}
+        value={counterValueFormated}
         tabIndex={-1}
         readOnly
       />

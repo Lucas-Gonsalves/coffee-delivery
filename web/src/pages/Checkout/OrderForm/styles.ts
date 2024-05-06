@@ -186,6 +186,13 @@ export const AdressInformation = styled.div`
   align-items: start;
 
   ${baseFormBox}
+
+  position: relative;
+  z-index: 0;
+
+  @media (min-width: ${props => props.theme["device-breackpoints"].s}) {
+    padding: 2.6rem 2rem 1.6rem;
+  }
 `;
 
 
@@ -203,7 +210,6 @@ export const InputSet = styled.div`
   flex-direction: column;
 
   gap: 1.6rem;
-  
 
   @media (min-width: ${props => props.theme["device-breackpoints"].s}) {
 
@@ -245,6 +251,12 @@ export const CepUFContainer = styled.div`
 
   #label_cep {
     max-width: 20rem;
+    
+    input::-webkit-inner-spin-button,
+    input::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
   }
 
   @media (min-width: ${props => props.theme["device-breackpoints"].s}) {
@@ -317,10 +329,40 @@ export const RadiosSet = styled.div`
       gap: .8rem;
     }
   }
+`;
 
-  @media (min-width: ${props => props.theme["device-breackpoints"].xl}) {
-    > div label span {
-      text-transform: uppercase;
+
+export const ErrorBoxStatus = styled.div`
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+
+  padding-top: 1.6rem;
+
+  span {
+    text-align: center;
+
+    color: ${props => props.theme.colors["red-100"]};
+    
+    font-size: ${props => props.theme.font.size.xs};
+    font-weight: ${props => props.theme.font.weight.regular};
+
+    line-height: ${props => props.theme["line-height"].common};
+  }
+
+  
+  @media (min-width: ${props => props.theme["device-breackpoints"].xs}) {
+    span {
+      font-size: ${props => props.theme.font.size.s};
+    }
+  }
+
+  @media (min-width: ${props => props.theme["device-breackpoints"].s}) {
+    justify-content: flex-end;
+    
+    span {
+      font-size: ${props => props.theme.font.size.xs};
     }
   }
 `;

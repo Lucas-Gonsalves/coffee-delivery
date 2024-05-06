@@ -3,12 +3,12 @@ import styled from "styled-components";
 
 export type TagColors = "yellow" | "yellow-dark" | "purple" | "brown";
 
-interface CoffeeTagContainerProps {
+interface TagContainerProps {
   "data-tag-color"?: TagColors;
 };
 
 
-export const CoffeeTagContainer = styled.span<CoffeeTagContainerProps>`
+export const TagContainer = styled.span<TagContainerProps>`
   width: max-content;
   height: min-content;
 
@@ -19,6 +19,7 @@ export const CoffeeTagContainer = styled.span<CoffeeTagContainerProps>`
   line-height: ${props => props.theme["line-height"].common};
 
   border-radius: 100px;
+  cursor: default;
 
 
   ${(props) => {
@@ -42,4 +43,11 @@ export const CoffeeTagContainer = styled.span<CoffeeTagContainerProps>`
         return `background: ${colors["yellow-100"]}; color: ${colors["yellow-200"]};`;
     }
   }}
+
+  transition: .3s ease;
+
+  &:hover {
+    transition: .3s ease;
+    filter: opacity(.8);
+  }
 `;

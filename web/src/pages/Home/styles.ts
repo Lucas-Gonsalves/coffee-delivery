@@ -10,15 +10,16 @@ export const HomeContainer = styled.div`
   position: relative;
   z-index: 0;
 
-  padding: 0 2rem;
+  padding: 0 2rem 8.3315rem;
 
-  @media (min-width: ${props => props.theme["device-breackpoints"].m}) {
-    padding: 0 4rem;
-  }
-
+  
   main {
     max-width: 113.2rem;
     margin: 0 auto; 
+  }
+
+  @media (min-width: ${props => props.theme["device-breackpoints"].m}) {
+    padding: 0 4rem;
   }
 `;
 

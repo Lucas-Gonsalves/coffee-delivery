@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { TagColors } from "../CoffeeTag/styles";
+import { TagColors } from "../Tag/styles";
 
 interface IconInformationContainerProps {
   "data-icon-color"?: TagColors;

@@ -7,8 +7,8 @@ export const defaultTheme = {
     "yellow-200": "#DBAC2C",
     "yellow-300": "#C47F17",
 
+    "purple-150": "#e9dfffAA",
     "purple-100": "#EBE5F9",
-    "purple-150": "#e9dfff",
     "purple-200": "#8047F8",
     "purple-300": "#4B2995",
 
@@ -23,6 +23,12 @@ export const defaultTheme = {
     "white-300": "#F3F2F2",
     "white-400": "#EDEDED",
     "white-500": "#E6E5E5",
+
+    "red-25": "#FFDDDD33",
+    "red-50": "#FFAAAA", 
+    "red-75": "#FFDDDD66", 
+    "red-100": "#E53E3E",
+    "red-200": "#C53030", 
   },
 
   
@@ -79,5 +85,6 @@ export const defaultTheme = {
     g: "1400px",
     xg: "1600px",
     xxg: "1920px",
+    exg: "2560px"
   },
 };

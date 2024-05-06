@@ -1,23 +1,23 @@
-import { CoffeeTagContainer, TagColors } from "./styles";
+import { TagContainer, TagColors } from "./styles";
 
 
-interface CoffeeTagProps {
+interface TagProps {
   "tag-title": string;
   "tag-color"?: TagColors;
 };
 
-export function CoffeeTag({
+export function Tag({
   
   "tag-title": tagTitle,
   "tag-color": tagColor
 
-}: CoffeeTagProps) {
+}: TagProps) {
 
   return(
-    <CoffeeTagContainer
+    <TagContainer
       data-tag-color={tagColor}
     >
       { tagTitle }
-    </CoffeeTagContainer>
+    </TagContainer>
   );
 };

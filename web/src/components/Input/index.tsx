@@ -19,11 +19,14 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((
     placeholder, 
     type= "text", 
     suffix= "",
+    ...rest
   },
 
   ref 
 
 ) => {
+
+  const isAriaInvalid = error ? "true" : "false";
 
   return (
 
@@ -31,12 +34,15 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((
       id={id}
       htmlFor={label}
     >
-      <InputSuffixSet>
+      <InputSuffixSet
+          aria-invalid={isAriaInvalid}
+      >
         <input
           ref={ref}
           id={label}
           type={type}
           placeholder={placeholder}
+          {...rest}
         />
         
           {
@@ -44,11 +50,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((
               ( <div><SuffixContainer>{ suffix }</SuffixContainer></div>)
           }
       </InputSuffixSet>
-
-        {
-          error && 
-            ( <ErrorContianer>{ error }</ErrorContianer> )
-        }
     </InputContainer>
   );
 });

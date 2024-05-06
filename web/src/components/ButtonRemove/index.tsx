@@ -14,11 +14,12 @@ export function ButtonRemove(
   {
    
     onClickButton,
+    ...rest
 
   }: ButtonRemoveProps) {
 
 
-  function handleOnCkick(): void {
+  function handleOnCkickButton(): void {
     onClickButton && onClickButton();
     
     return;
@@ -27,7 +28,8 @@ export function ButtonRemove(
 
   return (
     <ButtonRemoveContainer
-      onClick={() => handleOnCkick()}
+      {...rest}
+      onClick={() => handleOnCkickButton()}
     >
 
       <PiTrash/>

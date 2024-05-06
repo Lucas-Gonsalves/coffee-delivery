@@ -1,25 +1,43 @@
-import { BuyActions, CoffeeCardContianer, ImageTagContent, Price, PriceBuyActionsContent, Tags, TitleContent } from "./styles";
+import { 
 
-import { TagColors } from "../CoffeeTag/styles";
+  BuyActions, 
+  CardContianer, 
+  ImageTagContent, 
+  Price, 
+  PriceBuyActionsContent, 
+  Tags, 
+  TitleContent,
 
-import { CoffeeTag } from "../CoffeeTag";
+} from "./styles";
+
+import { TagColors } from "../Tag/styles";
+
+import { Tag } from "../Tag";
 import { ButtonMarket } from "../ButtonMarket";
 import { useState } from "react";
 import { InputCounter } from "../InputCounter";
+import { translatePrice } from "../../utils/translate/price.translate";
+
+import { useMarketContext } from "../../contexts/market/market.use.context";
+import { CartItems, CartSections } from "../../contexts/market/market.context";
 
 
-interface CoffeeCard {
+interface Card {
+  "card-id": number,
+  "card-section": CartSections,
   "card-image-src": string;
-  "card-image-alt"?: string;
+  "card-image-alt": string;
   "card-tags-title": [string, string?, string?];
-  "card-tags-color"?: TagColors;
+  "card-tags-color": TagColors;
   "card-title": string;
-  "card-description"?: string;
-  "card-price": string;
+  "card-description": string;
+  "card-price": number;
 };
 
-export function CoffeeCard({
+export function Card({
 
+  "card-id": id,
+  "card-section": section,
   "card-image-src": imageSrc,
   "card-image-alt": imageAlt,
   "card-tags-title": tagsTitle,
@@ -28,18 +46,19 @@ export function CoffeeCard({
   "card-description": description,
   "card-price": price,
 
-}: CoffeeCard) {
+}: Card) {
   
-  const [ counter, setCouter ] = useState<string>("0");
+  const { addToCart } = useMarketContext()
 
+  const [ counter, setCouter ] = useState<number>(1);
 
   function onClickInputCounter(action: "increase" | "decrease"): void {
 
     if(action === "increase") {
-      setCouter(prevState => (Number(prevState) + 1).toString());
+      setCouter(prevState => prevState + 1);
     
-    }else if(action === "decrease" && Number(counter) > 0) {
-      setCouter(prevState => (Number(prevState) - 1).toString());
+    }else if(action === "decrease" && counter > 1) {
+      setCouter(prevState => prevState - 1);
     };
 
     return;
@@ -48,22 +67,28 @@ export function CoffeeCard({
 
   function onClickButtonMarket() {
 
-    const cardData = {
-      imageSrc: imageSrc,
-      imageAlt: imageAlt,
-      tagsTitle: tagsTitle,
-      tagsColor: tagsColor,
-      description: description,
-      quantity: parseInt(counter),
-      price: parseInt(price),
+    const cardData: CartItems = {
+      id,
+      section,
+      imageSrc,
+      imageAlt,
+      tagsTitle,
+      tagsColor,
+      description,
+      price,
+      quantity: counter,
+      title
     };
 
-    console.log({[title]: cardData});
+    addToCart(section, cardData)
     return;
   };
 
+
+  const priceFormated = translatePrice(price);
+
   return (
-    <CoffeeCardContianer>
+    <CardContianer>
 
       <ImageTagContent>
         <img src={imageSrc} alt={imageAlt} />
@@ -73,7 +98,7 @@ export function CoffeeCard({
             tagsTitle.map((tagTitle) => (
               tagTitle && 
                 <li key={`key_tag_${tagTitle}`}>
-                  <CoffeeTag 
+                  <Tag 
                     tag-title={tagTitle} 
                     tag-color={tagsColor}
                   />
@@ -92,7 +117,7 @@ export function CoffeeCard({
       <PriceBuyActionsContent>
         <Price>
           <span>R$ </span>
-          <strong>{price}</strong>
+          <strong>{priceFormated}</strong>
         </Price>
 
         <BuyActions>
@@ -107,6 +132,6 @@ export function CoffeeCard({
         </BuyActions>
 
       </PriceBuyActionsContent>
-    </CoffeeCardContianer>
+    </CardContianer>
   );
 };

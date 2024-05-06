@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 
-export const CoffeeCardContianer = styled.div`
+export const CardContianer = styled.div`
   width: 25.6rem;
   height: 31rem;
 
@@ -17,11 +17,10 @@ export const CoffeeCardContianer = styled.div`
 
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.2);
 
-  transition: .3s ease;
+  transition: .6s ease;
 
   &:hover {
-    transition: .3s ease;
-    transform: scale(.97);
+    transition: .6s ease;
     box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.4);
   }
 `;
@@ -39,11 +38,11 @@ export const ImageTagContent = styled.div`
     height: 12rem;
 
     margin-top: -5rem;
-    transition: .6s;
+    transition: .6s ease-in-out;
   }
 
   img:hover {
-    transition: .6s;
+    transition: .6s ease-in-out;
 
     transform: rotate(-120deg);
   }

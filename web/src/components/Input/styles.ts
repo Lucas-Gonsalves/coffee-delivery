@@ -14,8 +14,24 @@ export const InputSuffixSet = styled.div`
 
     height: min-content;
 
-    padding: 1.2rem;
-    background: ${props => props.theme.colors["white-400"]};
+    padding: .8rem;
+
+    transition: ease .3s;
+
+    ${(props) => {
+
+      if(props["aria-invalid"] === "true") {
+        return `
+          background: ${props.theme.colors["red-25"]};
+          border-color: ${props.theme.colors["red-50"]};
+        `;
+      }
+
+      return `
+        background: ${props.theme.colors["white-400"]};
+        border-color: ${props.theme.colors["white-500"]};
+      `;
+    }}
     
     outline: none;
 
@@ -26,7 +42,11 @@ export const InputSuffixSet = styled.div`
 
     border-width: 1px;
     border-style: solid;
-    border-color: ${props => props.theme.colors["white-500"]};
+
+    &:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 1000px ${(props) => props.theme.colors["white-400"]} inset;
+      -webkit-text-fill-color: ${(props) => props.theme.colors["brown-300"]};
+    }
 
     &::placeholder {
       color: ${props => props.theme.colors["brown-200"]};
@@ -35,8 +55,8 @@ export const InputSuffixSet = styled.div`
   }
 
   @media (min-width: ${props => props.theme["device-breackpoints"].xs}) {
-    
     input {
+      padding: 1.2rem;
       font-size: ${props => props.theme.font.size.s};
     }
   }

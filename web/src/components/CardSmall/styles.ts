@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 
-export const CoffeeCardSmallContainer = styled.div`
+export const CardSmallContainer = styled.div`
   width: 100%;
   
   display: flex;
@@ -70,6 +70,8 @@ export const TitleContent = styled.div`
   gap: .4rem;
 
   h3 {
+    min-width: 10.2rem;
+
     font-size: ${props => props.theme.font.size.xs};
     color: ${props => props.theme.colors["brown-400"]};
     line-height: ${props => props.theme["line-height"].default};

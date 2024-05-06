@@ -15,12 +15,11 @@ export const InputCounterContainer = styled.div`
   background: ${props => props.theme.colors["white-500"]};
   border-radius: 6px;
   
-  transition: .3s;
+  transition: .6s ease;
 
   &:hover {
-    transition: .3s;
+    transition: .6s ease;
 
-    transform: scale(1.03);
 
     box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
     background: ${props => props.theme.colors["brown-100"]};
@@ -54,7 +53,7 @@ export const InputCounterContainer = styled.div`
     background: none;
 
     transform: scale(0.95);
-    transition: transform .3s;
+    transition: .6s ease;
 
     svg {
       border-radius: 50%;
@@ -67,7 +66,7 @@ export const InputCounterContainer = styled.div`
 
       svg {
         transform: scale(1);
-        transition: transform .3s;
+        transition: .6s ease;
 
         color: ${props => props.theme.colors["purple-300"]};
       }
@@ -75,7 +74,7 @@ export const InputCounterContainer = styled.div`
 
     &:active {
       transform: scale(1.5);
-      transition: transform .3s;
+      transition: .3s ease;
     }
   }
 

@@ -1,11 +1,13 @@
 import { CheckoutContainer, CheckoutContent } from "./styles";
 
 import { Header } from "../../components/Header";
-import { IntemsSelected } from "./ItemsSelected";
+import { ItemsSelected } from "./ItemsSelected";
 import { OrderForm } from "./OrderForm";
 
 
 export function Checkout() {
+
+
   return (
     <CheckoutContainer>
       
@@ -15,7 +17,8 @@ export function Checkout() {
         <CheckoutContent>
 
           <OrderForm />
-          <IntemsSelected />
+
+          <ItemsSelected />
           
         </CheckoutContent>
 
