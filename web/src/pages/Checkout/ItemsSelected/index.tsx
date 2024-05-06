@@ -14,12 +14,13 @@ export function ItemsSelected() {
 
   const { cart, getCart } = useMarketContext();
 
-  const cartProductLength = getCart("length-products");
+  const { cartAllPrice, cartLenght } = getCart();
 
-  const cartProductsExists = cartProductLength > 0;
+  const cartProductsExists = cartLenght > 0;
+  
   
   const [ delivery, setDelivery] = useState<number>(cartProductsExists ? 3.2 : 0);
-  const [ totalProd, setTotalProd] = useState<number>(getCart("total-value-price"));
+  const [ totalProd, setTotalProd] = useState<number>(cartAllPrice);
 
   const messageButtonEndOrder = cartProductsExists ? "Confirmar Pedido" : "Volte e selecione um produto";
 
@@ -31,10 +32,8 @@ export function ItemsSelected() {
 
 
   useEffect(() => {
-
-    setDelivery(prevState => getCart("length-products") > 0 ? prevState : 0);
-    setTotalProd(getCart("total-value-price"));
-    
+    setDelivery(prevState => cartLenght > 0 ? prevState : 0);
+    setTotalProd(cartAllPrice);
   }, [cart]);
 
   const totalProdFormatted = translatePrice(totalProd);
@@ -97,7 +96,7 @@ export function ItemsSelected() {
 
         <PayInformations>
           {
-            cartProductLength > 3 && <CoffeCardSmallSetOverflow />
+            cartLenght > 3 && <CoffeCardSmallSetOverflow />
           }
 
           <div>

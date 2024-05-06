@@ -1,20 +1,6 @@
-import { ReactNode, createContext, useState } from "react";
-import { CoffeeDatabaseProps } from "../../test/database";
-
-
-interface CoffeeCartProps extends CoffeeDatabaseProps {
-  quantity: number;
-};
-
-export type CartSections = "coffees";
-
- 
-export type CartItems = CoffeeCartProps;
-
-
-export interface CartProps {
-  coffees: CartItems[];
-};
+import { ReactNode, createContext, useReducer } from "react";
+import { CartItems, CartSections, CartState, marketReducer } from "../../reducers/market/reducers";
+import { addProductInCartAction, removeProductFromCartAction, updateProductInCartAction } from "../../reducers/market/actions";
 
 
 export interface MarketContextProviderProps {
@@ -22,14 +8,13 @@ export interface MarketContextProviderProps {
 };
 
 export interface MarketContextProps {
-  cart: CartProps;
+  cart: CartState;
 
   addToCart: (section: CartSections, productData: CartItems) => void;
-  removeOfCart: (section: CartSections, productId: number) => void;
-  updateCart: (section: CartSections, productData: Partial<CartItems>) => void;
-  getCart: (action: "length-products" | "total-value-price") => number;
+  removeFromCart: (section: CartSections, productId: number) => void;
+  updateCart: (section: CartSections, productDataToUpdate: Partial<CartItems>, productId: number) => void;
+  getCart: () => {cartLenght: number, cartAllPrice: number};
 };
-
 
 export const MarketContext = createContext({} as MarketContextProps);
 
@@ -40,150 +25,56 @@ export function MarketContextProvider({
 
 }: MarketContextProviderProps) {
 
-  const [ cart, setCart ] = useState<CartProps>({ coffees: [] });
+  const[ cart, dispatch ] = useReducer(marketReducer, 
+    {
+      coffees: []
+    }
+  );
 
+  function addToCart(section: CartSections, productData: CartItems) {
 
-  function addToCart(
-
-    section: CartSections,
-    productData: CartItems, 
-  
-  ): void {
-
-    const productAlredyExists = cart[section].filter(product => product.id === productData.id)[0];
+    const productAlredyExists = cart[section].filter((product: CartItems) => product.id === productData.id)[0];
 
     if(productAlredyExists) {
+      const newQuantity = productAlredyExists.quantity + productData.quantity;
+      const newPrice = productAlredyExists.price + productData.price;
 
-      if (productData.quantity <= 0) {
-        console.error("Quantidade inválida para adicionar ao carrinho.");
-        return;
-      }
-
-      const newQuantity = (productAlredyExists.quantity ?? 0) + (productData.quantity ?? 0);
-      const newPrice = (productAlredyExists.price / productAlredyExists.quantity) * newQuantity;
-
-      updateCart(
-        productAlredyExists.section,
-        {
-          ...productAlredyExists, 
-
-          quantity: newQuantity,
-          price: newPrice,
-        }
-      );
-
-      return
-    };
-    
-    setCart(prevState => {
-      const newPrice = (productData.price * productData.quantity);
-
-      const cartUpdated = {
-        ...prevState,
-        
-        [section]: [
-          ...prevState[section], 
-          {...productData, price: newPrice}
-        ]};
-
-      console.log(cartUpdated);
-
-      return cartUpdated;
-    })
-
-    return;
-  };
-
-  function removeOfCart(
-
-    section: CartSections,
-    productId: number,
-
-  ): void {
-
-    let productExists: CartItems | undefined = undefined;
-
-    const cartUpdated = cart[section].filter((product) => {
-
-      if(product.id === productId) {
-        productExists = product;
-
-        return false;
-      };
-
-      return true; 
-    });
-
-    if(!productExists) {
-      console.error("Id de produto inválido.");
-    };
-
-    console.log(cartUpdated)
-    setCart(prevState => ({...prevState, [section]: cartUpdated}));
-
-    return;
-  };
-
-  function updateCart(
-
-    section: CartSections,
-    productDataToUpdate: Partial<CartItems>
-
-  ): void {
-
-    const productAlredyExists = cart[section].filter(product => product.id === productDataToUpdate.id)[0];
-
-    if(!productAlredyExists) {
-      console.error("Não foi possível atualizar o produto no carrinho.");
+      updateCart(section, {quantity: newQuantity, price: newPrice}, productAlredyExists.id);
       return;
     };
 
-    const updatedCart = cart[section].map((product) => {
-
-      if(productDataToUpdate.id === product.id) {
-        
-        return { 
-          ...productAlredyExists,
-          ...productDataToUpdate 
-        };
-      };
-
-      return product;
-    })
-
-    console.log("updated_at", updatedCart)
-
-    setCart(prevState => ({
-      ...prevState, 
-      [section]: updatedCart,
-    }));
-
+    dispatch(addProductInCartAction(productData, section));
     return;
   };
 
-  function getCart( 
-    action: "length-products" | "total-value-price"
-  ) : number {
-
-    if(action === "length-products") {
-      return Object.entries(cart).reduce((current, products: [string, CartItems[]]) => {
-        return current + products[1].length;
-      }, 0);
-    };
-
-    if(action === "total-value-price") {
-      return Object.entries(cart).reduce((current, products: [string, CartItems[]]) => {
-        
-        return current + products[1].reduce((currentProduct, product) => {
-
-          return currentProduct + product.price; 
-
-        }, 0);
-      }, 0);
-    }
-
-    return 0;
+  function removeFromCart(section: CartSections, productId: number) {
+    dispatch(removeProductFromCartAction(productId, section));
+    return;
   };
+
+  function updateCart(section: CartSections, productDataToUpdate: Partial<CartItems>, productId: number) {
+    dispatch(updateProductInCartAction(productDataToUpdate, productId, section));
+    return;
+  };
+  
+
+  function getCart() {
+    const cartLenght = Object.entries(cart).reduce((current, products: [string, CartItems[]]) => {
+      return current + products[1].length;
+    }, 0);
+
+
+    const cartAllPrice = Object.entries(cart).reduce((current, products: [string, CartItems[]]) => {
+      return current + products[1].reduce((currentProduct, product) => {
+
+        return currentProduct + product.price; 
+      }, 0);
+    }, 0);
+
+    return { cartLenght, cartAllPrice}
+  };
+
+
 
   return(
     <MarketContext.Provider
@@ -191,7 +82,7 @@ export function MarketContextProvider({
         cart,
         addToCart,
         updateCart,
-        removeOfCart,
+        removeFromCart,
         getCart,
       }}
     >

@@ -19,7 +19,7 @@ import { InputCounter } from "../InputCounter";
 import { translatePrice } from "../../utils/translate/price.translate";
 
 import { useMarketContext } from "../../contexts/market/market.use.context";
-import { CartItems, CartSections } from "../../contexts/market/market.context";
+import { CartItems, CartSections } from "../../reducers/market/reducers";
 
 
 interface Card {

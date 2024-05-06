@@ -1,4 +1,4 @@
-import { TagColors } from "../components/Tag/styles"
+import { TagColors } from "../../components/Tag/styles"
 
 import { assetsImports } from "./assetsImports";
 const { coffees } = assetsImports;

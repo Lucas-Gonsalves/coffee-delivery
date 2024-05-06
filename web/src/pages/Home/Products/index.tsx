@@ -2,7 +2,7 @@ import { Card } from "../../../components/Card";
 import { Cards, ProductsContainer } from "./styles";
 
 
-import { database } from "../../../test/database";
+import { database } from "../../../database/test/database";
 
 
 export function Products() {

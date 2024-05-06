@@ -4,7 +4,7 @@ import { ButtonSet, CardSmallContainer, InformationsContent, TitleContent } from
 import { ButtonRemove } from '../ButtonRemove';
 import { translatePrice } from '../../utils/translate/price.translate';
 import { useMarketContext } from '../../contexts/market/market.use.context';
-import { CartSections } from '../../contexts/market/market.context';
+import { CartSections } from '../../reducers/market/reducers';
 
 
 interface CardSmallProps {
@@ -30,7 +30,7 @@ export function CardSmall({
 
 }: CardSmallProps ) {
 
-  const { removeOfCart, updateCart } = useMarketContext();
+  const { removeFromCart, updateCart } = useMarketContext();
 
   const [ counter, setCounter ] = useState<number>(quantity);
 
@@ -53,7 +53,7 @@ export function CardSmall({
 
 
   function handleRemoveItemOfCart(): void {
-    removeOfCart(section, id);
+    removeFromCart(section, id);
     return;
   };
 
@@ -61,7 +61,7 @@ export function CardSmall({
 
     const newPrice = (price / quantity) * counter;
 
-    updateCart(section, { id, quantity: counter, price: newPrice });
+    updateCart(section, { id, quantity: counter, price: newPrice }, id);
 
   }, [counter])
 

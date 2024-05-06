@@ -12,6 +12,7 @@ import { useMarketContext } from "../../contexts/market/market.use.context";
 export function Header() {
 
   const { getCart } = useMarketContext();
+  const { cartLenght } = getCart()
 
   const navigate = useNavigate();
   const { pathname: currentPath } = useLocation();
@@ -39,7 +40,7 @@ export function Header() {
     return;
   };
 
-  const LenghtOfAllCartProducts = getCart("length-products").toString();
+  const LenghtOfAllCartProducts = cartLenght.toString();
 
   return(
     <HeaderContainer>
