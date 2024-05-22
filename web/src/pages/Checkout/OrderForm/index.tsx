@@ -33,6 +33,9 @@ import { string, z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
+import { ManageCookiesKeysToUse } from "../../../hooks/cookies/manageCookieKeys";
+import { useManageCookies } from "../../../hooks/cookies/useManageCookies";
 
 
 export const formOrderSchema = z.object({
@@ -78,10 +81,17 @@ export const formOrderSchema = z.object({
 
 })
 
-type FormOrderSchemaProps = z.infer<typeof formOrderSchema>
+export type FormOrderSchemaProps = z.infer<typeof formOrderSchema>
 
 
 export function OrderForm() {
+  const { addCookie } = useManageCookies()
+
+  const { userFormKey } = ManageCookiesKeysToUse;
+  const [ cookies ] = useCookies();
+
+  const userFormCookie : FormOrderSchemaProps = cookies[userFormKey];
+
 
   const { 
 
@@ -93,12 +103,24 @@ export function OrderForm() {
     mode: "all",
     reValidateMode: "onChange",
     resolver: zodResolver(formOrderSchema),
+    defaultValues: {
+      CEP: userFormCookie?.CEP,
+      city: userFormCookie?.city,
+      complement: userFormCookie?.complement,
+      neighborhood: userFormCookie?.neighborhood,
+      numberHome: userFormCookie?.numberHome,
+      road: userFormCookie?.road,
+      UF: userFormCookie?.UF,
+      formOfPayment: userFormCookie?.formOfPayment,
+    }
   })
 
+  console.log(errors)
   const navigate = useNavigate();
 
   function onHandleSubmit(data: FormOrderSchemaProps): void {
     console.log(data);
+    addCookie(userFormKey, data)
     navigate("/sucess");
     return;
   };

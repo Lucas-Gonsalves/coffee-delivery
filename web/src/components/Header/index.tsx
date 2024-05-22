@@ -7,6 +7,9 @@ import { PiShoppingCartFill } from "react-icons/pi";
 
 import { useNavigate, useLocation } from "react-router-dom";
 import { useMarketContext } from "../../contexts/market/market.use.context";
+import { ManageCookiesKeysToUse } from "../../hooks/cookies/manageCookieKeys";
+import { useCookies } from "react-cookie";
+import { FormOrderSchemaProps } from "../../pages/Checkout/OrderForm";
 
 
 export function Header() {
@@ -16,6 +19,14 @@ export function Header() {
 
   const navigate = useNavigate();
   const { pathname: currentPath } = useLocation();
+
+  const { userFormKey } = ManageCookiesKeysToUse;
+  const [ cookies ] = useCookies([userFormKey])
+
+  const userFormCookies: FormOrderSchemaProps = cookies[userFormKey];
+
+  const city = userFormCookies?.city;
+  const UF = userFormCookies?.UF;
 
   function goToHome(): void {
     
@@ -42,6 +53,8 @@ export function Header() {
 
   const LenghtOfAllCartProducts = cartLenght.toString();
 
+  const adressText = `${city}, ${UF}`;
+
   return(
     <HeaderContainer>
 
@@ -52,10 +65,13 @@ export function Header() {
       <AdressMarketSet
         onClick={() => goToCheckout()}
       >
-        <Adress>
-          <PiMapPinFill/>
-          <p>Guaramirim, SC</p>
-        </Adress>
+
+        { userFormCookies &&
+          <Adress>
+            <PiMapPinFill/>
+            <p>{adressText}</p>
+          </Adress>
+        }
 
 
         <Market

@@ -1,6 +1,9 @@
-import { ReactNode, createContext, useReducer } from "react";
+import { ReactNode, createContext, useEffect, useReducer } from "react";
 import { CartItems, CartSections, CartState, marketReducer } from "../../reducers/market/reducers";
 import { addProductInCartAction, removeProductFromCartAction, updateProductInCartAction } from "../../reducers/market/actions";
+import { useCookies } from "react-cookie";
+import { ManageCookiesKeysToUse } from "../../hooks/cookies/manageCookieKeys";
+import { useManageCookies } from "../../hooks/cookies/useManageCookies";
 
 
 export interface MarketContextProviderProps {
@@ -11,7 +14,7 @@ export interface MarketContextProps {
   cart: CartState;
 
   addToCart: (section: CartSections, productData: CartItems) => void;
-  removeFromCart: (section: CartSections, productId: number) => void;
+  removeFromCart: (ection?: CartSections, productId?: number) => void;
   updateCart: (section: CartSections, productDataToUpdate: Partial<CartItems>, productId: number) => void;
   getCart: () => {cartLenght: number, cartAllPrice: number};
 };
@@ -24,11 +27,13 @@ export function MarketContextProvider({
   children,
 
 }: MarketContextProviderProps) {
+  const { userCartKey } = ManageCookiesKeysToUse;
+  const { addCookie } = useManageCookies();
+  
+  const [ cookies, ] = useCookies([userCartKey]);
 
   const[ cart, dispatch ] = useReducer(marketReducer, 
-    {
-      coffees: []
-    }
+    cookies[userCartKey] ?? {coffees: []},
   );
 
   function addToCart(section: CartSections, productData: CartItems) {
@@ -36,10 +41,13 @@ export function MarketContextProvider({
     const productAlredyExists = cart[section].filter((product: CartItems) => product.id === productData.id)[0];
 
     if(productAlredyExists) {
-      const newQuantity = productAlredyExists.quantity + productData.quantity;
-      const newPrice = productAlredyExists.price + productData.price;
 
-      updateCart(section, {quantity: newQuantity, price: newPrice}, productAlredyExists.id);
+      const productDataToUpdate = {
+        quantity: productAlredyExists.quantity + productData.quantity,
+        price: productAlredyExists.price + productData.price,
+      };
+
+      updateCart(section, productDataToUpdate, productAlredyExists.id);
       return;
     };
 
@@ -47,7 +55,7 @@ export function MarketContextProvider({
     return;
   };
 
-  function removeFromCart(section: CartSections, productId: number) {
+  function removeFromCart(section?: CartSections, productId?: number)  {
     dispatch(removeProductFromCartAction(productId, section));
     return;
   };
@@ -74,6 +82,10 @@ export function MarketContextProvider({
     return { cartLenght, cartAllPrice}
   };
 
+
+  useEffect(() => {
+    addCookie(userCartKey, cart);
+  }, [cart])
 
 
   return(

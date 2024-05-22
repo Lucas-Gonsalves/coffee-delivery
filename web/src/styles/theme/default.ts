@@ -52,6 +52,9 @@ export const defaultTheme = {
       gg: "2.8rem",
       xg: "3.2rem",
       xxg: "4.8rem",
+      exg: "6.4rem",
+      eeg: "10.1rem",
+      eeeg: "12.1rem",
     },
 
     weight: {

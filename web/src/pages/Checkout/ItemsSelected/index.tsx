@@ -3,17 +3,17 @@ import { CoffeeCardsSmallSet, CoffeCardSmallSetOverflow, ItemsSelectedContainer,
 import { CardSmall } from "../../../components/CardSmall";
 import { Button } from "../../../components/Button";
 
-import { useMarketContext } from "../../../contexts/market/market.use.context";
-import { translatePrice } from "../../../utils/translate/price.translate";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { useMarketContext } from "../../../contexts/market/market.use.context";
+import { translatePrice } from "../../../utils/translate/price.translate";
 
 
 export function ItemsSelected() {
   const navigate = useNavigate();
 
   const { cart, getCart } = useMarketContext();
-
   const { cartAllPrice, cartLenght } = getCart();
 
   const cartProductsExists = cartLenght > 0;
@@ -29,7 +29,6 @@ export function ItemsSelected() {
     navigate("/");
     return
   }
-
 
   useEffect(() => {
     setDelivery(prevState => cartLenght > 0 ? prevState : 0);
@@ -123,7 +122,6 @@ export function ItemsSelected() {
           color={ButtonColor}
           onClick={isToGoHome}
         />
-
 
       </ItemsSelectedContent>
 

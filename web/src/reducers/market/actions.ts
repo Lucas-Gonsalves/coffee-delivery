@@ -21,7 +21,7 @@ export function addProductInCartAction(product: CoffeeCartProps, section: CartSe
 };
 
 
-export function removeProductFromCartAction(productId: number, section: CartSections) {
+export function removeProductFromCartAction( productId?: number, section?: CartSections) {
   return {
     type: ActionTypes.REMOVE_PRODUCT_FROM_CART,
     payload: {
@@ -56,5 +56,5 @@ export function getProductInCartAction(product: CoffeeCartProps) {
 
 export type ActionTypesDescribed =
   | { type: ActionTypes.ADD_PRODUCT_IN_CART, payload: { product: CoffeeCartProps, section: CartSections } }
-  | { type: ActionTypes.REMOVE_PRODUCT_FROM_CART, payload: { section: CartSections, productId: number }} 
-  | { type: ActionTypes.UPDATE_PRODUCT_IN_CART, payload: { productDataToUpdate: Partial<CartItems>, section: CartSections, productId: number} };
+  | { type: ActionTypes.REMOVE_PRODUCT_FROM_CART, payload: { section?: CartSections, productId?: number }} 
+  | { type: ActionTypes.UPDATE_PRODUCT_IN_CART, payload: { productDataToUpdate: Partial<CartItems>, section: CartSections, productId: number} }

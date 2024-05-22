@@ -44,11 +44,24 @@ export function marketReducer(state: CartState, action: ActionTypesDescribed) {
     case ActionTypes.REMOVE_PRODUCT_FROM_CART: {
       return produce(state, draft => {
 
+        if(!action.payload.productId && !action.payload.section) {
+          
+          Object.keys(draft).forEach(section => {
+            draft[section as CartSections] = [];
+          });
+
+          return draft;
+        };
+
+        if(!action.payload.productId || !action.payload.section) {
+          return;
+        };
+
         const index = draft[action.payload.section].findIndex(product => product.id === action.payload.productId);
         
-
         if(index !== -1) {
           draft[action.payload.section].splice(index, 1)
+          return draft
         };
       }) 
     }
