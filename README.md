@@ -17,7 +17,7 @@ To get started with Ignite Coffee, clone the repository and follow the installat
 ```bash
 git clone https://github.com/yourgithub/ignite-coffee.git
 
-cd ignite-coffee
+cd web
 
 npm install
 
