@@ -1,11 +1,28 @@
-# Iginite Coffee
+# Ignite Coffee
 
-This project aims to develop an application to manage a shopping cart in a fictional coffee shop.
+Welcome to Ignite Coffee! This is an application designed to simplify your shopping experience at a fictional coffee shop. Here are the main features:
 
-## Key Features:
+## Main Features
 
-- Explore a variety of coffees available for purchase.
+- **Add Products to Cart**: On the home page, you can browse the selection of coffees and add desired products to the shopping cart with just one click.
 
-- Adjust the quantity of products (coffees) in the cart as necessary.
+- **Manage Cart**: In the shopping cart, you can view the added items, adjust quantities, and even remove unwanted products.
 
-- You can fill in your address details in the purchase confirmation.
+- **Fill in Address Information**: When accessing the shopping cart, you can fill in address information for delivery. Your address can be saved in cookies for future convenience, but you can also update it at any time.
+
+## Getting Started
+
+To get started with Ignite Coffee, clone the repository and follow the installation instructions below:
+
+```bash
+git clone https://github.com/yourgithub/ignite-coffee.git
+
+cd ignite-coffee
+
+npm install
+
+npm run dev
+```
+
+## Contribution
+If you're a developer and found a bug or have a suggestion for improvement, feel free to open an issue. Your contribution is very welcome!
